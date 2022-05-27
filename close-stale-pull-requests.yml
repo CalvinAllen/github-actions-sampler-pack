@@ -1,0 +1,17 @@
+name: "Close Stale Pull Requests"
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/stale@v3
+      with:
+        repo-token: <your-github-token>
+        stale-pr-message: 'This pull request has been marked stale due to 30 days of no activity. It will be closed in 5 days from now if there is still no activity.'
+        days-before-stale: 30
+        days-before-close: 5
+        stale-pr-label: 'stale'
+        exempt-pr-labels: 'on hold,in review'
